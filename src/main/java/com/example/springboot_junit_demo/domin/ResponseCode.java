@@ -1,4 +1,4 @@
-package com.example.reggie.domin;
+package com.example.springboot_junit_demo.domin;
 
 public class ResponseCode {
     //请求成功状态码

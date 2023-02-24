@@ -1,4 +1,4 @@
-package com.example.reggie.customException;
+package com.example.springboot_junit_demo.customException;
 
 public class SystemException extends RuntimeException{
     private int code;

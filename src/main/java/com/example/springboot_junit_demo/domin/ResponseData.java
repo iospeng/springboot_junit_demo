@@ -1,4 +1,4 @@
-package com.example.reggie.domin;
+package com.example.springboot_junit_demo.domin;
 
 import java.io.Serializable;
 

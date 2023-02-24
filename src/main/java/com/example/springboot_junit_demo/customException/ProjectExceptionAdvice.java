@@ -1,11 +1,11 @@
-package com.example.reggie.customException;
+package com.example.springboot_junit_demo.customException;
 
-import com.example.reggie.domin.ResponseData;
+import com.example.springboot_junit_demo.domin.ResponseData;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-import static com.example.reggie.domin.ResponseCode.REQUEST_ERR;
+import static com.example.springboot_junit_demo.domin.ResponseCode.REQUEST_ERR;
 
 //@ControllerAdvice
 @RestControllerAdvice
