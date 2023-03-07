@@ -2,10 +2,14 @@ package com.example.springboot_junit_demo.OpenFeign;
 
 import com.example.springboot_junit_demo.OpenFeign.OpenFeignInterface;
 import com.example.springboot_junit_demo.RetrofitTest.NoticePush;
+import com.example.springboot_junit_demo.RetrofitTest.ZsSaveWord.Manual;
+import com.example.springboot_junit_demo.RetrofitTest.ZsSaveWord.ResponseBodys;
+import com.example.springboot_junit_demo.conf.InterfacePath;
 import com.example.springboot_junit_demo.unit.UrlCode;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
@@ -22,7 +26,7 @@ public class OpenFeignService {
     /**
      * 舟山12328我的工单
      */
-    public void findMyorders (){
+    public NoticePush findMyorders (){
         //参数准备
         Map<String, String> param = new HashMap<>();
         List<Map<String, String>> rules = new ArrayList<>();
@@ -35,9 +39,29 @@ public class OpenFeignService {
         String codes = s.toString();
         //url编码解码
         String urlEnCode = urlCode.urlEncoding(codes);
-        String cookie = "JSESSIONID=B531CD40C05D5F046BA5698C79105829";
-        NoticePush myOrder =openFeignInterface.findMyOrder(0, 10, urlEnCode, "taskDeadLineTime,desc",cookie);
+        NoticePush myOrder =openFeignInterface.findMyOrder(0, 10, urlEnCode, "taskDeadLineTime,desc",
+                InterfacePath.zsCookie);
         log.info("我的工单列表请求数据：{}",myOrder);
+        return myOrder;
+    }
+
+    public ResponseBodys saveWord(){
+        Manual manual = new Manual();
+        manual.setCustomSubtypeCode("1");
+        manual.setCustomSubtypeName("语文");
+        manual.setDetail("手工添加");
+        manual.setRegisterDepName("局领导");
+        manual.setRegisterId("ff808081818b6a4e01827c6b74d4017c");
+        manual.setRegisterName("测试舟山1");
+        manual.setYwarea("2");
+        manual.setYwareaName("定海区");
+        manual.setYwtype("10");
+        manual.setYwtypeName("自定义");
+        manual.setYwtypefullname("语文");
+        manual.setYwtypeid("1");
+        ResponseBodys responseBody = openFeignInterface.saveWord(InterfacePath.zsCookie, manual);
+        log.info("添加工单：{}",responseBody);
+        return responseBody;
     }
 
     /**
@@ -56,8 +80,7 @@ public class OpenFeignService {
         String codes = s.toString();
         //url编码解码
         String urlEnCode = urlCode.urlEncoding(codes);
-        String cookie = "JSESSIONID=B531CD40C05D5F046BA5698C79105829";
-        String myOrder =openFeignInterface.findMaterial(cookie,0, 10, urlEnCode, "submitTime,desc");
+        String myOrder =openFeignInterface.findMaterial(InterfacePath.zsCookie,0, 10, urlEnCode, "submitTime,desc");
         log.info("报送材料请求数据：{}",myOrder);
     }
 }

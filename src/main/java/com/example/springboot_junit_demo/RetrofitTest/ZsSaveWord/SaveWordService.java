@@ -4,9 +4,7 @@ import com.example.springboot_junit_demo.conf.InterfacePath;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import retrofit2.Call;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -22,7 +20,7 @@ public class SaveWordService {
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
         SaveWordInterFace saveWordInterFace = retrofit.create(SaveWordInterFace.class);
-        Response<ResponseBody> res = null;
+        Response<ResponseBodys> res = null;
         try {
             res = saveWordInterFace.saveWord(cookie, manual).execute();
         } catch (IOException e) {

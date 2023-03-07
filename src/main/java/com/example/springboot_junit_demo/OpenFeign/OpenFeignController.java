@@ -1,5 +1,7 @@
 package com.example.springboot_junit_demo.OpenFeign;
 
+import com.example.springboot_junit_demo.RetrofitTest.NoticePush;
+import com.example.springboot_junit_demo.RetrofitTest.ZsSaveWord.ResponseBodys;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,9 +15,16 @@ public class OpenFeignController {
     @Autowired
     OpenFeignService openFeignService;
     @GetMapping("/findWorldList")
-    public void zsWorldList(){
+    public NoticePush zsWorldList(){
 //        openFeignService.findMyorders();
-        openFeignService.findMyorders();
+        NoticePush myorders = openFeignService.findMyorders();
+        return myorders;
+    }
+
+    @GetMapping("save")
+    public ResponseBodys saveWord(){
+        ResponseBodys responseBodys = openFeignService.saveWord();
+        return responseBodys;
     }
     @GetMapping("/findMaterial")
     public void findMaterial(){
