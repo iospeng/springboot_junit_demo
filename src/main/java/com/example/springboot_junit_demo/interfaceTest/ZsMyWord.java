@@ -55,7 +55,7 @@ public class ZsMyWord {
         //设置请求头
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.parseMediaType("application/json;charset=UTF-8"));
-        headers.add("Cookie","JSESSIONID=8B41D2746152FE902D6C2B56348BCECF");
+        headers.add("Cookie","JSESSIONID=B6E88A5FEC9B955DC3DED6E1C7C4FFC7");
 //        headers.add("Cookie",cookie);
 //        headers.add(HttpHeaders.COOKIE, cookie);
 //        log.info("传参：cookie={}",cookie);
